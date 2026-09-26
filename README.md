@@ -40,10 +40,6 @@ El frontend queda en `http://localhost:5173`.
 - **Tailwind CSS** — control total de estilos, sin frameworks de UI.
 - **Interceptor de axios** — centraliza la extracción del `message` del backend en los toasts.
 
-## 🎨 Paleta
-
-`#111827` (fondo) · `#E9DDFF` (texto) · `#2d3748` (bordes) · `#1f2937` (hover)
-
 ## 📁 Estructura
 
 ```
