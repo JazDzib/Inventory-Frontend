@@ -1,75 +1,57 @@
-# React + TypeScript + Vite
+# Inventory Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend en React para la **Prueba Técnica SUNUM (Etapa 1)** — consume la API de `Inventory-Backend`.
 
-Currently, two official plugins are available:
+## 🛠️ Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+React · TypeScript · Vite · Tailwind CSS · react-hook-form · zod · axios · react-router · sonner
 
-## React Compiler
+## ✅ Requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 22+
+- El **backend corriendo** en `http://localhost:3000`
 
-## Expanding the ESLint configuration
+## 🚀 Instalación y ejecución
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/JazDzib/Inventory-Frontend.git
+cd Inventory-Frontend
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+El frontend queda en `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+> El proxy de Vite redirige `/api` → `http://localhost:3000`, así no hay que configurar URLs ni sufrir CORS en desarrollo.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ✨ Funcionalidades
 
+- **Tabla de productos** (ID, Nombre, Cantidad, Precio, Categoría, Acciones).
+- **Crear y editar** producto en un modal con validaciones (react-hook-form + zod) antes de enviar.
+- **Eliminar** con confirmación.
+- **Paginación** (anterior/siguiente + página actual).
+- **Errores visibles** del backend (400/404/409/500) vía toasts con el `message` de la API.
+- Diseño limpio con estado de carga (skeleton) y columna de acciones con iconos.
+
+## 🧠 Decisiones técnicas
+
+- **Patrón contenedor/presentacional** — la página maneja el estado y las llamadas; los componentes solo muestran y avisan (datos bajan, eventos suben).
+- **react-hook-form + zod** — validación con un esquema único; los errores salen del propio schema.
+- **Tailwind CSS** — control total de estilos, sin frameworks de UI.
+- **Interceptor de axios** — centraliza la extracción del `message` del backend en los toasts.
+
+## 🎨 Paleta
+
+`#111827` (fondo) · `#E9DDFF` (texto) · `#2d3748` (bordes) · `#1f2937` (hover)
+
+## 📁 Estructura
+
+```
+src/
+├── types/        # Contratos de datos
+├── services/     # Endpoints de la API (axios)
+├── components/   # ProductTable, CreateProduct (form), Paginacion
+├── routes/       # ProductPage (contenedor)
+├── utils/        # Cliente axios con interceptor de errores
+└── App.tsx       # Layout + rutas
 ```
