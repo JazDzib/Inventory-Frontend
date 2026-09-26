@@ -9,7 +9,7 @@ export default function Pagination({ page, total, limit, onPageChange }: Paginat
   const totalPages = Math.max(1, Math.ceil(total / limit));
 
   return (
-    <div className="mx-auto mt-6 flex max-w-screen-xl items-center justify-between gap-2 px-4 text-[#E9DDFF]/70 md:px-8">
+    <div className="mx-auto mt-12 flex max-w-screen-xl items-center justify-between px-4 text-[#E9DDFF]/70 md:px-8">
       <button
         disabled={page <= 1}
         onClick={() => onPageChange(page - 1)}

@@ -11,7 +11,7 @@ export default function ProductTable({ products, onEdit, onDelete }: Props) {
   return (
      <div className="my-4 overflow-hidden rounded-lg border border-[#2d3748] bg-[#111827]">
       <div className="overflow-x-auto">
-        <table className="min-w-[600px] table-auto text-left text-sm text-[#E9DDFF]">
+        <table className="min-w-full table-auto text-left text-sm text-[#E9DDFF]">
           <thead className="border-b border-[#2d3748] text-xs uppercase text-[#E9DDFF]/60">
             <tr>
               <th className="px-4 py-3 font-medium">ID</th>
@@ -19,7 +19,7 @@ export default function ProductTable({ products, onEdit, onDelete }: Props) {
               <th className="px-4 py-3 font-medium">Cantidad</th>
               <th className="px-4 py-3 font-medium">Precio</th>
               <th className="px-4 py-3 font-medium">Categoría</th>
-              <th className="w-10 px-4 py-3 text-right font-medium">Acciones</th>
+              <th className="w-40 px-4 py-3 text-right font-medium">Acciones</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#2d3748]">
