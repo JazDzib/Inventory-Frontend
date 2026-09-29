@@ -24,6 +24,14 @@ El frontend queda en `http://localhost:5173`.
 
 > El proxy de Vite redirige `/api` → `http://localhost:3000`, así no hay que configurar URLs ni sufrir CORS en desarrollo.
 
+## Variables de entorno
+
+Es necesario duplicar el .env.production.example  eliminar el .example del nombre de la copia y ahi mismo agregar el url del backend
+```txt
+VITE_API_URL=https://agregar-aqui-la-url/api
+
+```
+
 ## ✨ Funcionalidades
 
 - **Tabla de productos** (ID, Nombre, Cantidad, Precio, Categoría, Acciones).
@@ -39,6 +47,7 @@ El frontend queda en `http://localhost:5173`.
 - **react-hook-form + zod** — validación con un esquema único; los errores salen del propio schema.
 - **Tailwind CSS** — control total de estilos, sin frameworks de UI.
 - **Interceptor de axios** — centraliza la extracción del `message` del backend en los toasts.
+
 
 ## 📁 Estructura
 
